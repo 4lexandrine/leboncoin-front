@@ -1,38 +1,176 @@
-.App {
-  text-align: center;
+/* COMMONS */
+
+:root {
+  --main-color: #f56b2a;
+  --main-bg-color: #fafafa;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  background-color: var(--main-bg-color);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+h2 {
+  font-size: 20px;
+  line-height: 24px;
+  color: #1a1a1a;
+  font-weight: 600;
+}
+h2:hover {
+  cursor: pointer;
+  color: var(--main-color);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.wrapper {
+  display: flex;
+  width: 1074px;
+  margin: auto;
+  justify-content: space-between;
+  align-items: center;
+}
+.icon-xs {
+  font-size: 15px;
+}
+.icon-s {
+  font-size: 20px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* HEADER */
+header {
+  background-color: #ffffff;
+  height: 60px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+  padding: 10px 0 0;
+  margin-bottom: 40px;
+  position: relative;
+}
+.left-header {
+  display: flex;
+  justify-content: space-between;
+  width: 600px;
+}
+.logo {
+  height: 40px;
+}
+.add-product {
+  background-color: var(--main-color);
+  border: none;
+  border-radius: 5px;
+  color: white;
+  width: 200px;
+  height: 40px;
+  cursor: pointer;
+}
+.add-product .icon-xs {
+  padding-right: 5px;
+}
+.search-wrapper {
+  position: relative;
+}
+.search {
+  width: 200px;
+  height: 40px;
+  padding-left: 10px;
+  border-radius: 5px;
+  border: 1px solid lightgray;
+}
+.icon-search {
+  position: absolute;
+  right: 10px;
+  top: 12px;
+}
+.icon-search:hover {
+  cursor: pointer;
+}
+.user-connect {
   display: flex;
   flex-direction: column;
   align-items: center;
+  cursor: pointer;
+}
+.user-connect p {
+  margin-top: 5px;
+}
+.user-connect:hover:not(.icon-s) {
+  border-bottom: 2px solid var(--main-color);
+}
+/* ELLISPE */
+.ellipse {
+  width: 1900px;
+  height: 293px;
+  background-color: var(--main-color);
+  border-radius: 50%;
+  position: absolute;
+  top: -150px;
+  left: 0;
+}
+
+/* OFFERS */
+
+.search-block {
+  width: 810px;
+  height: 130px;
+  background-color: white;
+  margin-bottom: 40px;
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  border-radius: 5px;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+}
+.search-block-input,
+.search-block-btn {
+  height: 44px;
+}
+.search-block-input {
+  width: 320px;
+  margin-right: 20px;
+  padding-left: 10px;
+  border-radius: 5px;
+  border: 1px solid lightgray;
+}
+.search-block-btn {
+  border: none;
+  border-radius: 5px;
+  background-color: #4183d7;
   color: white;
+  width: 220px;
 }
-
-.App-link {
-  color: #61dafb;
+.offers-wrapper {
+  display: flex;
+  margin: 14px;
+  width: 1000px;
+  height: 180px;
+  position: relative;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.picture {
+  width: 240px;
+  height: 180px;
+  object-position: center;
+  object-fit: cover;
+}
+.offer-description {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: 20px;
+}
+.body-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.price {
+  font-size: 16px;
+  color: var(--main-color);
+  line-height: 18px;
+  font-weight: 600;
+}
+.icon-heart {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+.icon-heart:hover {
+  cursor: pointer;
 }
