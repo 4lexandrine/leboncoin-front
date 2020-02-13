@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './App.css';
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Offers from "./containers/Offers";
+import Offer from "./containers/Offer";
+
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faUser, faPlusSquare, faHeart } from '@fortawesome/free-regular-svg-icons';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
@@ -20,7 +22,10 @@ function App() {
       <Header />
       <Router>
         <Switch>
-          <Route path="/" >
+          <Route path="/offer/:id">
+            <Offer />
+          </Route>
+          <Route path="/offer" >
             <Offers />
           </Route>
         </Switch>

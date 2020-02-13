@@ -8,7 +8,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const Header = () => {
     return (
         <>
-
             <header>
                 <div className="wrapper">
                     <div className="left-header">

@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import Offer from "./Offer";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Offers = () => {
 
     const [products, setProducts] = useState({});
     const [isLoading, setIsLoading] = useState(true)
+
 
     useEffect(() => {
         const fetchData = async () => {
@@ -18,10 +18,10 @@ const Offers = () => {
         fetchData();
     }, [])
 
-
-
     return (
         <>
+            <div className="ellipse"></div>
+
             {isLoading ? <p>Loading...</p> :
                 <div className="body-wrapper" >
 
@@ -31,22 +31,21 @@ const Offers = () => {
                     </div>
 
                     {products.map(product => {
+                        const url = `/offer/${product._id}`
                         return (
-
-                            <div className="offers-wrapper" key={product._id}>
-                                {/* <div className="ellipse"></div> */}
-
-                                <div className="picture"> {product.pictures[0] ? <img className="picture" src={product.pictures} alt={product.description} /> : product.pictures}</div>
-
-                                <div className="offer-description">
-                                    <FontAwesomeIcon className="icon-s icon-heart" icon={['far', 'heart']} />
-                                    <div>
-                                        <h2>{product.title}</h2>
-                                        <p className="price">{product.price} €</p>
+                            <Link to={url}>
+                                <div className="offers-wrapper" key={product._id}>
+                                    <div className="picture"> {product.pictures[0] ? <img className="picture" src={product.pictures} alt={product.description} /> : product.pictures}</div>
+                                    <div className="offers-description">
+                                        <FontAwesomeIcon className="icon-s icon-heart" icon={['far', 'heart']} />
+                                        <div>
+                                            <h2>{product.title}</h2>
+                                            <p className="price">{product.price} €</p>
+                                        </div>
+                                        <p className="date">{product.created}</p>
                                     </div>
-                                    <p className="date">{product.created}</p>
                                 </div>
-                            </div>
+                            </Link>
                         )
                     })}
                 </div>

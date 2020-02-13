@@ -10,6 +10,10 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
+a {
+  text-decoration: none;
+  color: inherit;
+}
 h2 {
   font-size: 20px;
   line-height: 24px;
@@ -19,6 +23,13 @@ h2 {
 h2:hover {
   cursor: pointer;
   color: var(--main-color);
+}
+h3 {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  color: #1a1a1a;
+  margin: 20px 0;
 }
 
 .wrapper {
@@ -43,6 +54,7 @@ header {
   padding: 10px 0 0;
   margin-bottom: 40px;
   position: relative;
+  z-index: 999;
 }
 .left-header {
   display: flex;
@@ -94,6 +106,7 @@ header {
 .user-connect:hover:not(.icon-s) {
   border-bottom: 2px solid var(--main-color);
 }
+
 /* ELLISPE */
 .ellipse {
   width: 1900px;
@@ -101,7 +114,7 @@ header {
   background-color: var(--main-color);
   border-radius: 50%;
   position: absolute;
-  top: -150px;
+  top: -100px;
   left: 0;
 }
 
@@ -117,6 +130,7 @@ header {
   align-items: center;
   border-radius: 5px;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+  z-index: 99;
 }
 .search-block-input,
 .search-block-btn {
@@ -149,7 +163,7 @@ header {
   object-position: center;
   object-fit: cover;
 }
-.offer-description {
+.offers-description {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -173,4 +187,39 @@ header {
 }
 .icon-heart:hover {
   cursor: pointer;
+}
+
+/* OFFER */
+
+.offer-description {
+  width: 700px;
+  border-bottom: 1px solid lightgray;
+  border-top: 1px solid lightgray;
+  margin: 40px 0;
+}
+.offer-description p {
+  font-size: 13px;
+  line-height: 20px;
+  color: #1a1a1a;
+  margin-bottom: 20px;
+}
+.offer-img {
+  width: 700px;
+  height: 394px;
+  object-fit: cover;
+  object-position: center;
+}
+.block-offer {
+  background-color: white;
+  height: 607px;
+}
+.offer-title-block h2 {
+  margin-bottom: 10px;
+}
+.offer-title-block {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 190px;
 }
