@@ -33,9 +33,9 @@ const Offers = () => {
                     {products.map(product => {
                         const url = `/offer/${product._id}`
                         return (
-                            <Link to={url}>
-                                <div className="offers-wrapper" key={product._id}>
-                                    <div className="picture"> {product.pictures[0] ? <img className="picture" src={product.pictures} alt={product.description} /> : product.pictures}</div>
+                            <Link  key={product._id} to={url}>
+                                <div className="offers-wrapper" >
+                                    <div className="picture"> {product.pictures[0] ? <img className="picture" src={product.pictures[0]} alt={product.title} /> : product.pictures}</div>
                                     <div className="offers-description">
                                         <FontAwesomeIcon className="icon-s icon-heart" icon={['far', 'heart']} />
                                         <div>
