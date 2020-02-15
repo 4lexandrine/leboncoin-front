@@ -1,0 +1,68 @@
+/* SEARCH BLOCK */
+.search-block {
+  width: 810px;
+  height: 130px;
+  background-color: white;
+  margin-bottom: 40px;
+  border-radius: 5px;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+  z-index: 99;
+}
+.search-block-input,
+.search-block-btn {
+  height: 44px;
+}
+.search-block-input {
+  width: 320px;
+  margin-right: 20px;
+  padding-left: 10px;
+  border-radius: 5px;
+  border: 1px solid lightgray;
+}
+.search-block-btn {
+  border: none;
+  border-radius: 5px;
+  background-color: #4183d7;
+  color: white;
+  width: 220px;
+}
+.search-block-btn:hover {
+  cursor: pointer;
+}
+
+/* OFFERS */
+
+.offers-wrapper {
+  margin: 14px 0;
+  height: 180px;
+  position: relative;
+  border-radius: 4px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+}
+.picture {
+  width: 240px;
+  height: 180px;
+  object-position: center;
+  object-fit: contain;
+  background-color: lightgrey;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+.offers-description {
+  margin-left: 20px;
+  padding: 10px 0;
+}
+.price {
+  font-size: 16px;
+  color: var(--main-color);
+  line-height: 18px;
+  font-weight: 600;
+}
+.icon-heart {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+.icon-heart:hover {
+  cursor: pointer;
+}

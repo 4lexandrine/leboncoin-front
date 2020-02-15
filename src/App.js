@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Header from "./components/Header";
-import Offers from "./containers/Offers";
-import Offer from "./containers/Offer";
+import Header from "./components/Header/Header";
+import Offers from "./containers/Offers/Offers";
+import Offer from "./containers/Offer/Offer";
 import Cookies from "js-cookie";
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faUser, faPlusSquare, faHeart, faBell, faEye, faClock } from '@fortawesome/free-regular-svg-icons';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import LogIn from './containers/LogIn';
-import SignUp from './containers/SignUp';
+import LogIn from './containers/LogIn/LogIn';
+import SignUp from './containers/SignUp/SignUp';
 
 library.add(faUser, faPlusSquare, faSearch, faHeart, faBell, faEye, faClock);
 
@@ -31,7 +31,6 @@ function App() {
   const [user, setUser] = useState(newState);
 
   return (
-
     <Router>
       <Header user={user} setUser={setUser} />
       <Switch>
