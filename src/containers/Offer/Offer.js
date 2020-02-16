@@ -37,7 +37,8 @@ const Offer = props => {
                 <div className="offer-title-block d-flex flex-column sp-between">
                   <h2>{products.title}</h2>
                   <p className="price">{products.price}€</p>
-                  <p>{moment(products.created).format('LLLL')}</p>
+                  <p>{moment(products
+                    .created).format('LLLL')}</p>
                 </div>
               </div>
               <div className="offer-description">

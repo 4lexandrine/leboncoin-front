@@ -8,6 +8,7 @@ import "./Signup.css";
 const SignUp = () => {
     const history = useHistory();
 
+    // j'initialise tous mes état de formulaire
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -45,17 +46,18 @@ const SignUp = () => {
                     </div>
                     <form className="signup-form d-flex flex-column sp-between" onSubmit={async (e) => {
                         e.preventDefault();
-                        if (password === password1) {
-                            if (cgv) {
-                                try {
+                        if (password === password1) { // si les mots de passe entrées sont identiques
+                            if (cgv) { // si les conditions générales sont cochées
+                                try { // alors j'essaie d'envoyer les infos nécessaires au serveur
                                     const response = await axios.post(
                                         "https://leboncoin-api.herokuapp.com/api/user/sign_up",
                                         { username, email, password });
 
-                                    if (response.data.token) {
+                                    if (response.data.token) { // si le serveur me renvoie un token
                                         const token = response.data.token;
-                                        Cookies.set("token", token, { expires: 7 });
+                                        Cookies.set("token", token, { expires: 7 }); // je l'enregistre dans mes cookies
                                         // console.log(response.data.token);
+                                        // et le réinitialise tous mes états
                                         setUsername("");
                                         setEmail("");
                                         setPassword("");
@@ -95,10 +97,11 @@ const SignUp = () => {
                         </div>
                         <div className="cgv d-flex">
                             <input className="check" type="checkbox" checked={cgv ? true : false} onChange={() => {
+                                // si mes cgv sont true alors passe les en false et inversement
                                 cgv = !cgv;
                                 setCgv(cgv)
                             }} />
-                            <p>"J'accepte les <a href="#">Conditions Générales de Vente</a> et les <a href="#">Conditions Générales d'utilisation</a>"</p>
+                            <p>"J'accepte les <a href="!#">Conditions Générales de Vente</a> et les <a href="!#">Conditions Générales d'utilisation</a>"</p>
                         </div>
                         <button className="connect" type="submit">Créer mon Compte Personnel</button>
                     </form>

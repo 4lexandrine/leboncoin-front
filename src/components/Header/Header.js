@@ -1,5 +1,6 @@
 import React from "react";
 import logo from "../../assets/Leboncoin.Logo.png";
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useHistory } from "react-router-dom";
 import Cookies from "js-cookie";
@@ -18,7 +19,9 @@ const Header = ({ user, setUser }) => {
                         <h1><img className="logo" src={logo} alt="" onClick={() => {
                             history.push("/");
                         }} /></h1>
-                        <button className="add-product"><FontAwesomeIcon className="icon-xs" icon={['far', 'plus-square']} />Déposer une annonce</button>
+                        <button onClick={() => {
+                            history.push("/offer/publish")
+                        }} className="add-product"><FontAwesomeIcon className="icon-xs" icon={['far', 'plus-square']} />Déposer une annonce</button>
                         <div className="underline">
                             <button className="search-btn" onClick={() => {
                                 history.push("/");
