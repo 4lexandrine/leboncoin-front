@@ -19,7 +19,7 @@ const LogIn = ({ setUser }) => {
                 // je retire l'evenement par défaut de rechargement de page
                 e.preventDefault(); 
                 try { // j'essaie d'envoyer mes infos au serveur
-                    const response = await axios.post("https://leboncoin-api.herokuapp.com/api/user/log_in", { email, password });
+                    const response = await axios.post("https://leboncoin-4lexandrine.herokuapp.com/user/log_in", { email, password });
                     if (response.data.token) { // si le serveur reconnait mes identifiants et me renvoie mon token
                         const token = response.data.token 
                         Cookies.set("token", token, { expires: 7 }); // je l'enregistre dans mes cookies

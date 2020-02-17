@@ -41,7 +41,7 @@ function App() {
       <Header user={user} setUser={setUser} />
       <Switch>
         <Route path="/offer/publish">
-          <Publish />
+          <Publish user={user} />
         </Route>
         <Route path="/user/log_in" >
           <LogIn setUser={setUser} />

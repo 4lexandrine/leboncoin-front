@@ -50,7 +50,7 @@ const SignUp = () => {
                             if (cgv) { // si les conditions générales sont cochées
                                 try { // alors j'essaie d'envoyer les infos nécessaires au serveur
                                     const response = await axios.post(
-                                        "https://leboncoin-api.herokuapp.com/api/user/sign_up",
+                                        "https://leboncoin-4lexandrine.herokuapp.com/user/sign_up",
                                         { username, email, password });
 
                                     if (response.data.token) { // si le serveur me renvoie un token

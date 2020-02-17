@@ -27,3 +27,6 @@
 .publish-form label {
   font-weight: 700;
 }
+.publish-form .file {
+  border: none;
+}

@@ -15,7 +15,7 @@ const Offer = props => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch(`https://leboncoin-api.herokuapp.com/api/offer/${id}`);
+      const response = await fetch(`https://leboncoin-4lexandrine.herokuapp.com/offer/${id}`);
       const data = await response.json();
       setProducts(data);
       setIsLoading(false)
@@ -33,7 +33,8 @@ const Offer = props => {
           <div className="d-flex justify-center wrapper">
             <div>
               <div className="block-offer">
-                <img className="offer-img" src={products.pictures[0]} alt={products.title} />
+                {/* <img className="offer-img" src={products.pictures[0]} alt={products.title} /> */}
+                {products.picture ? <img className="offer-img" src={products.picture} alt={products.title} /> : products.picture}
                 <div className="offer-title-block d-flex flex-column sp-between">
                   <h2>{products.title}</h2>
                   <p className="price">{products.price}€</p>

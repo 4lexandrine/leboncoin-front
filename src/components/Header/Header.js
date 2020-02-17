@@ -20,7 +20,11 @@ const Header = ({ user, setUser }) => {
                             history.push("/");
                         }} /></h1>
                         <button onClick={() => {
-                            history.push("/offer/publish")
+                            if (user === null) {
+                                history.push("/user/log_in")
+                            } else {
+                                history.push("/offer/publish")
+                            }
                         }} className="add-product"><FontAwesomeIcon className="icon-xs" icon={['far', 'plus-square']} />Déposer une annonce</button>
                         <div className="underline">
                             <button className="search-btn" onClick={() => {
