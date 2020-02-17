@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDropzone } from 'react-dropzone';
 
-
-
 const thumbsContainer = {
     display: 'flex',
     flexDirection: 'row',

@@ -56,7 +56,7 @@ function App() {
           <Offers />
         </Route>
       </Switch>
-      <Footer />
+      {/* <Footer /> */}
     </Router>
 
   );
