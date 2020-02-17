@@ -4,14 +4,13 @@ import "./Publish.css";
 import { useHistory } from "react-router-dom";
 import Dropzone from "../../components/Dropzone/Dropzone";
 
-const Publish = ({ user }) => {
+const Publish = ({ user, file, setFile }) => {
     const history = useHistory();
 
 
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [price, setPrice] = useState(0);
-    const [file, setFile] = useState();
 
     return (
         <div className="wrapper">
@@ -63,13 +62,12 @@ const Publish = ({ user }) => {
                         <span> €</span>
                     </div>
                     <label>Photo *</label>
-                    <Dropzone />
-                    {/* <div> */}
-                    {/* <input className="file" type="file" onChange={(e) => {
+                    {/* <Dropzone setFile={setFile} file={file} /> */}
+                    <div>
+                        <input className="file" type="file" onChange={(e) => {
                             setFile(e.target.files[0]);
-                        }}></input> */}
-
-                    {/* </div> */}
+                        }}></input>
+                    </div>
                 </div>
                 <button type="submit" className="blue-btn">Valider</button>
             </form>

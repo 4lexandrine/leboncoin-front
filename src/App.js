@@ -35,13 +35,15 @@ function App() {
   }
 
   const [user, setUser] = useState(newState);
+  const [file, setFile] = useState();
+
 
   return (
     <Router>
       <Header user={user} setUser={setUser} />
       <Switch>
         <Route path="/offer/publish">
-          <Publish user={user} />
+          <Publish user={user} file={file} setFile={setFile} />
         </Route>
         <Route path="/user/log_in" >
           <LogIn setUser={setUser} />
@@ -56,7 +58,7 @@ function App() {
           <Offers />
         </Route>
       </Switch>
-      {/* <Footer /> */}
+      <Footer />
     </Router>
 
   );

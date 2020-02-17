@@ -50,7 +50,7 @@ function Dropzone(props) {
                 <img onClick={() => {
                     const newFiles = [...files]
                     newFiles.splice(index, 1);
-                    setFiles(newFiles);
+                    props.setFiles(newFiles);
                     console.log(newFiles);
 
                 }}
@@ -69,7 +69,9 @@ function Dropzone(props) {
     return (
         <section className="container">
             <div {...getRootProps({ className: 'dropzone' })}>
-                <input {...getInputProps()} />
+                <input {...getInputProps()} onChange={(e) => {
+                    props.setFile(e.target.files);
+                }}></input>
                 <p>Drag 'n' drop some files here, or click to select files</p>
             </div>
             <aside style={thumbsContainer}>
