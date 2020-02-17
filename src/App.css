@@ -18,9 +18,6 @@ body {
 body::-webkit-scrollbar {
   display: none;
 }
-section {
-  padding-top: 50px;
-}
 .wrapper {
   width: 1074px;
   margin: 0 auto;
@@ -98,8 +95,10 @@ h3 {
   background-color: #4183d7;
   color: white;
   font-weight: 700;
-  margin-top: 60px;
+  margin-top: 10px;
   border: none;
+  width: 360px;
+  height: 45px;
 }
 .btn-xs {
   width: 100px;

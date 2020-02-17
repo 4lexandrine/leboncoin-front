@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./Publish.css";
 import { useHistory } from "react-router-dom";
+import Dropzone from "../../components/Dropzone/Dropzone";
 
 const Publish = ({ user }) => {
     const history = useHistory();
@@ -37,10 +38,10 @@ const Publish = ({ user }) => {
                     );
                     history.push("/");
                 } catch (error) {
-                    if (err.response.status === 500) {
+                    if (error.response.status === 500) {
                         console.error("An error occurred");
                     } else {
-                        console.error(err.response.data.msg);
+                        console.error(error.response.data.msg);
                     }
                 }
             }}>
@@ -62,11 +63,13 @@ const Publish = ({ user }) => {
                         <span> €</span>
                     </div>
                     <label>Photo *</label>
-                    <div>
-                        <input className="file" type="file" onChange={(e) => {
+                    <Dropzone />
+                    {/* <div> */}
+                    {/* <input className="file" type="file" onChange={(e) => {
                             setFile(e.target.files[0]);
-                        }}></input>
-                    </div>
+                        }}></input> */}
+
+                    {/* </div> */}
                 </div>
                 <button type="submit" className="blue-btn">Valider</button>
             </form>
