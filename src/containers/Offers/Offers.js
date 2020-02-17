@@ -42,6 +42,7 @@ const Offers = () => {
 
                                 const url = `/offer/${product._id}` // construction de l'url pour avoir une page qui présente les articles un par un
                                 return (
+                                    <div className="offers">
                                     <Link key={product._id} to={url}>
                                         {/* Quand on clic sur une des offres on atterira sur le lien le l'offre en question ciblé grace à son id */}
                                         <div className="d-flex wrapper offers-wrapper" >
@@ -58,6 +59,7 @@ const Offers = () => {
                                             </div>
                                         </div>
                                     </Link>
+                                    </div>
                                 )
                             })
                         )}
