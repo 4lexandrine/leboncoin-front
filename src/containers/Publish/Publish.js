@@ -24,21 +24,25 @@ const Publish = ({ user }) => {
                 formData.append("description", description);
                 formData.append("price", price);
                 formData.append("picture", file);
-
-                const response = await axios.post(
-                    "https://leboncoin-4lexandrine.herokuapp.com/offer/publish",
-                    formData,
-                    {
-                        headers: {
-                            Authorization: `Bearer ${user.token}`,
-                            "Content-Type": "multipart/form-data"
+                try {
+                    const response = await axios.post(
+                        "https://leboncoin-4lexandrine.herokuapp.com/offer/publish",
+                        formData,
+                        {
+                            headers: {
+                                Authorization: `Bearer ${user.token}`,
+                                "Content-Type": "multipart/form-data"
+                            }
                         }
+                    );
+                    history.push("/");
+                } catch (error) {
+                    if (err.response.status === 500) {
+                        console.error("An error occurred");
+                    } else {
+                        console.error(err.response.data.msg);
                     }
-                    
-                );
-
-                history.push("/");
-                console.log(response);
+                }
             }}>
                 <h2>Déposer une annonce</h2>
                 <div className="d-flex flex-column">
