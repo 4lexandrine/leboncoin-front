@@ -2,15 +2,15 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./Publish.css";
 import { useHistory } from "react-router-dom";
-import Dropzone from "../../components/Dropzone/Dropzone";
+// import Dropzone from "../../components/Dropzone/Dropzone";
 
-const Publish = ({ user, file, setFile }) => {
+const Publish = ({ user }) => {
     const history = useHistory();
-
 
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [price, setPrice] = useState(0);
+    const [file, setFile] = useState();
 
     return (
         <div className="wrapper">
@@ -35,12 +35,14 @@ const Publish = ({ user, file, setFile }) => {
                             }
                         }
                     );
+                    console.log(response);
                     history.push("/");
+
                 } catch (error) {
                     if (error.response.status === 500) {
                         console.error("An error occurred");
                     } else {
-                        console.error(error.response.data.msg);
+                        console.error(error.response.data);
                     }
                 }
             }}>

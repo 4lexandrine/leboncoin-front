@@ -16,16 +16,8 @@ header {
   height: 40px;
   cursor: pointer;
 }
-.add-product {
-  background-color: var(--main-color);
-  border: none;
-  border-radius: 5px;
-  color: white;
-  width: 200px;
-  height: 40px;
-  cursor: pointer;
-}
-.add-product .icon-xs {
+
+.orange-btn .icon-xs {
   padding-right: 5px;
 }
 .search-btn {

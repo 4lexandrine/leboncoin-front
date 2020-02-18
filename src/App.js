@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { StripeProvider } from "react-stripe-elements";
 import Cookies from "js-cookie";
 
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
+
 import Offers from "./containers/Offers/Offers";
+import Payment from "./containers/Payment/Payment"
 import Offer from "./containers/Offer/Offer";
 import LogIn from './containers/LogIn/LogIn';
 import SignUp from './containers/SignUp/SignUp';
@@ -22,45 +25,47 @@ library.add(faUser, faPlusSquare, faSearch, faHeart, faBell, faEye, faClock); //
 // 3. Créer des liens entre les pages
 
 function App() {
-  const tokenFromCookie = Cookies.get("token"); // on recupère le token 
+  // const tokenFromCookie = Cookies.get("token"); // on recupère le token 
 
-  let newState;
-  // Si le token existe
-  if (tokenFromCookie) {
-    // on l'attribut comme nouvel état de user
-    newState = { token: tokenFromCookie };
-  } else {
-    // sinon on le réinitialise à null
-    newState = null;
-  }
-
-  const [user, setUser] = useState(newState);
-  const [file, setFile] = useState();
-
+  // let newState;
+  // // Si le token existe
+  // if (tokenFromCookie) {
+  //   // on l'attribut comme nouvel état de user
+  //   newState = { token: tokenFromCookie };
+  // } else {
+  //   // sinon on le réinitialise à null
+  //   newState = null;
+  // }
+  //peut être écrit de cette manière là 
+  const [user, setUser] = useState(Cookies.get("token" || null));
 
   return (
-    <Router>
-      <Header user={user} setUser={setUser} />
-      <Switch>
-        <Route path="/offer/publish">
-          <Publish user={user} file={file} setFile={setFile} />
-        </Route>
-        <Route path="/user/log_in" >
-          <LogIn setUser={setUser} />
-        </Route>
-        <Route path="/user/sign_up">
-          <SignUp />
-        </Route>
-        <Route path="/offer/:id">
-          <Offer />
-        </Route>
-        <Route path="/" >
-          <Offers />
-        </Route>
-      </Switch>
-      <Footer />
-    </Router>
-
+    <StripeProvider apiKey="pk_test_PyYOjGwyrTCkcSWUiDUU5MlT00xdLDWfPF">
+      <Router>
+        <Header user={user} setUser={setUser} />
+        <Switch>
+          <Route exact path="/" >
+            <Offers />
+          </Route>
+          <Route path="/payment">
+            <Payment />
+          </Route>
+          <Route path="/offer/publish">
+            <Publish user={user} />
+          </Route>
+          <Route path="/user/log_in" >
+            <LogIn setUser={setUser} />
+          </Route>
+          <Route path="/user/sign_up">
+            <SignUp />
+          </Route>
+          <Route path="/offer/:id">
+            <Offer user={user} />
+          </Route>
+        </Switch>
+        <Footer />
+      </Router>
+    </StripeProvider>
   );
 }
 

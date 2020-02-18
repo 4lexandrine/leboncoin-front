@@ -56,8 +56,9 @@ const SignUp = () => {
                                     if (response.data.token) { // si le serveur me renvoie un token
                                         const token = response.data.token;
                                         Cookies.set("token", token, { expires: 7 }); // je l'enregistre dans mes cookies
+                                        Cookies.set("username", username, { expires: 7 })
                                         // console.log(response.data.token);
-                                        // et le réinitialise tous mes états
+                                        // et je réinitialise tous mes états
                                         setUsername("");
                                         setEmail("");
                                         setPassword("");

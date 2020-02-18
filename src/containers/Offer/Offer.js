@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import "./Offer.css";
+import { useParams, useHistory } from "react-router-dom";
 import moment from "moment";
 import 'moment/locale/fr';
+import "./Offer.css";
 
-const Offer = props => {
-  moment.locale('fr')
+const Offer = ({ user }) => {
+  moment.locale('fr');
+  const history = useHistory();
 
   const { id } = useParams();
   // console.log(id);
@@ -20,7 +21,6 @@ const Offer = props => {
       setProducts(data);
       setIsLoading(false)
       // console.log(data);
-
     }
     fetchData();
 
@@ -51,7 +51,10 @@ const Offer = props => {
               <div className='user d-flex flex-column align-items sp-around'>
                 <h2>{products.creator.account.username}</h2>
                 <p>17 Annonces en ligne</p>
-                <button className="add-product">Acheter</button>
+                <button className="orange-btn"
+                  onClick={() => {
+                    user === null ? history.push("/user/log_in") : history.push("/payment", { title: products.title, picture: products.picture, price: products.price, username: products.creator.account.username });
+                  }}>Acheter</button>
               </div>
             </aside>
           </div>
