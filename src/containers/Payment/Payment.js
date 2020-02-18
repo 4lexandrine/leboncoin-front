@@ -4,9 +4,11 @@ import { Elements } from "react-stripe-elements";
 import CheckoutForm from "../../components/CheckoutForm/CheckoutForm";
 import "./Payment.css"
 
-const Payment = () => {
+const Payment = ({ username }) => {
     const location = useLocation();
-    const { title, picture, price, username } = location.state;
+    const { title, picture, price } = location.state;
+    // const username = Cookies.get("username");
+
     return (
         <section>
             <div className="wrapper d-flex justify-center">
@@ -17,7 +19,9 @@ const Payment = () => {
                     <p className="price">{price} €</p>
                     <h3>Vos coordonnées bancaires</h3>
                     <Elements>
-                        <CheckoutForm username={username} price={price} title={title} />
+                        {/* <CheckoutForm username={username} price={price} title={title} /> */}
+                        <CheckoutForm price={price} title={title} username={username} />
+
                     </Elements>
                 </div>
             </div>

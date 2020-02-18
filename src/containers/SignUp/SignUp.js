@@ -1,18 +1,17 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
-import Cookies from "js-cookie";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import "./Signup.css";
 
-const SignUp = () => {
+const SignUp = ({ onLog }) => {
     const history = useHistory();
 
     // j'initialise tous mes état de formulaire
-    const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [password1, setPassword1] = useState("");
+    const [username, setUsername] = useState("");
     let [cgv, setCgv] = useState(false);
 
 
@@ -50,23 +49,26 @@ const SignUp = () => {
                             if (cgv) { // si les conditions générales sont cochées
                                 try { // alors j'essaie d'envoyer les infos nécessaires au serveur
                                     const response = await axios.post(
+                                        // "http://localhost:3100/user/sign_up",
                                         "https://leboncoin-4lexandrine.herokuapp.com/user/sign_up",
+
                                         { username, email, password });
 
                                     if (response.data.token) { // si le serveur me renvoie un token
-                                        const token = response.data.token;
-                                        Cookies.set("token", token, { expires: 7 }); // je l'enregistre dans mes cookies
-                                        Cookies.set("username", username, { expires: 7 })
+
+                                        onLog(response.data.token, response.data.account.username)
                                         // console.log(response.data.token);
                                         // et je réinitialise tous mes états
                                         setUsername("");
                                         setEmail("");
                                         setPassword("");
                                         setPassword1("");
-                                        history.push("/");
+                                        history.push("/", { username: username });
                                     }
-                                } catch {
+                                } catch (error) {
                                     alert("An error occured");
+                                    console.log(error.message);
+
                                 }
                             } else {
                                 alert("Vous n'avez pas validé les Conditions Générales")
@@ -74,6 +76,7 @@ const SignUp = () => {
                         } else {
                             alert("Vos mots de passe ne sont pas identiques");
                         }
+
                     }}>
                         <h2 className="signup-title">Créez un compte</h2>
                         <div className="d-flex flex-column">

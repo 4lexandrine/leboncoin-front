@@ -37,27 +37,36 @@ function App() {
   //   newState = null;
   // }
   //peut être écrit de cette manière là 
-  const [user, setUser] = useState(Cookies.get("token" || null));
+
+  const [user, setUser] = useState(Cookies.get("token") || null);
+  const [username, setUsername] = useState(Cookies.get("username") || "");
+
+  const onLog = (token, username) => {
+    setUser(token);
+    setUsername(username);
+    Cookies.set("token", token, { expires: 7 });
+    Cookies.set("username", username, { expires: 7 });
+  };
 
   return (
     <StripeProvider apiKey="pk_test_PyYOjGwyrTCkcSWUiDUU5MlT00xdLDWfPF">
       <Router>
-        <Header user={user} setUser={setUser} />
+        <Header setUser={setUser} user={user} username={username} />
         <Switch>
           <Route exact path="/" >
-            <Offers />
+            <Offers user={user} />
           </Route>
           <Route path="/payment">
-            <Payment />
+            <Payment username={username} />
           </Route>
           <Route path="/offer/publish">
-            <Publish user={user} />
+            <Publish />
           </Route>
           <Route path="/user/log_in" >
-            <LogIn setUser={setUser} />
+            <LogIn onLog={onLog} />
           </Route>
           <Route path="/user/sign_up">
-            <SignUp />
+            <SignUp onLog={onLog} />
           </Route>
           <Route path="/offer/:id">
             <Offer user={user} />

@@ -32,7 +32,8 @@
 
 /* OFFERS */
 .offers {
-  margin-bottom: 100px;
+  margin-bottom: 2px;
+  height: 200px;
 }
 .offers-wrapper {
   margin: 14px 0;

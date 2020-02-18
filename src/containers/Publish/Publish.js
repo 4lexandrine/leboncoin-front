@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./Publish.css";
 import { useHistory } from "react-router-dom";
+import Cookies from "js-cookie";
 // import Dropzone from "../../components/Dropzone/Dropzone";
 
-const Publish = ({ user }) => {
+const Publish = () => {
     const history = useHistory();
+    const token = Cookies.get("token");
 
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
@@ -23,21 +25,25 @@ const Publish = ({ user }) => {
                 formData.append("title", title);
                 formData.append("description", description);
                 formData.append("price", price);
-                formData.append("picture", file);
+                formData.append("picture", file)
+                // const keys = Object.keys(file);
+                // for (let key in keys) {
+                //     formData.append("picture", file[keys]);
+                // }
                 try {
                     const response = await axios.post(
                         "https://leboncoin-4lexandrine.herokuapp.com/offer/publish",
+                        // "http://localhost:3100/offer/publish",
                         formData,
                         {
                             headers: {
-                                Authorization: `Bearer ${user.token}`,
+                                Authorization: `Bearer ${token}`,
                                 "Content-Type": "multipart/form-data"
                             }
                         }
                     );
                     console.log(response);
-                    history.push("/");
-
+                    history.push(`/offer/${response.data._id}`);
                 } catch (error) {
                     if (error.response.status === 500) {
                         console.error("An error occurred");

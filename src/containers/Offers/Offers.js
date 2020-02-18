@@ -7,7 +7,7 @@ import Search from "../../components/Search/Search";
 import moment from "moment";
 import 'moment/locale/fr';
 
-const Offers = () => {
+const Offers = ({ user }) => {
     moment.locale('fr');
     const [isLoading, setIsLoading] = useState(true); // état pour voir voir si la page est chargée ou en cours de chargement
     const [products, setProducts] = useState({}); // état pour mettre à jour la liste d'offres
@@ -25,7 +25,7 @@ const Offers = () => {
             setIsLoading(false); // on signifie que le chargement est effectué
         }
         fetchData(); // on appelle la fonction
-    }, [])
+    }, []);
 
     return (
         <>
@@ -52,7 +52,7 @@ const Offers = () => {
                                                         <p className="price">{product.price} €</p>
                                                     </div>
                                                     {/* Le package moment permet de transformer un objet Date en date "mercredi 13 janvier 2020 20h30" */}
-                                                    <p className="date">{moment(product.created).format('LLLL')}</p>
+                                                    <p className="date">{moment(product.date).format('LLLL')}</p>
                                                 </div>
                                             </div>
                                         </Link>

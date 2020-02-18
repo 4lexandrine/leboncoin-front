@@ -53,7 +53,9 @@ const Offer = ({ user }) => {
                 <p>17 Annonces en ligne</p>
                 <button className="orange-btn"
                   onClick={() => {
-                    user === null ? history.push("/user/log_in") : history.push("/payment", { title: products.title, picture: products.picture, price: products.price, username: products.creator.account.username });
+                    console.log(user);
+
+                    user === null ? history.push("/user/log_in") : history.push("/payment", { title: products.title, picture: products.picture, price: products.price });
                   }}>Acheter</button>
               </div>
             </aside>

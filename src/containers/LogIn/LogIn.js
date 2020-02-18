@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
-import Cookies from "js-cookie";
 import "./Login.css";
 
-const LogIn = ({ setUser }) => {
+const LogIn = ({ onLog }) => {
     const history = useHistory();
 
     // j'initialise mes états
@@ -17,13 +16,14 @@ const LogIn = ({ setUser }) => {
             <form className="d-flex flex-column justify-center align-items login-form
             " onSubmit={async (e) => {
                 // je retire l'evenement par défaut de rechargement de page
-                e.preventDefault(); 
                 try { // j'essaie d'envoyer mes infos au serveur
-                    const response = await axios.post("https://leboncoin-4lexandrine.herokuapp.com/user/log_in", { email, password });
+                    e.preventDefault(); 
+                    const response = await axios.post(
+                        // "http://localhost:3100/user/log_in",
+                        "https://leboncoin-4lexandrine.herokuapp.com/user/log_in",
+                        { email, password });
                     if (response.data.token) { // si le serveur reconnait mes identifiants et me renvoie mon token
-                        const token = response.data.token 
-                        Cookies.set("token", token, { expires: 7 }); // je l'enregistre dans mes cookies
-                        setUser(token); // je le transmets à mon état user
+                        onLog(response.data.token, response.data.username); 
                         // console.log(response.data.token);
                         // je réinitialise mes états pour retrouver des champs vides
                         setEmail("");
@@ -34,8 +34,7 @@ const LogIn = ({ setUser }) => {
                         alert("token is missing");
                     }
                 } catch (error) {
-                    alert("identifiants incorrects");
-                }
+                    console.log(error.message);                }
             }}>
                 <h2>Connexion</h2>
                 <div className="d-flex flex-column">
@@ -53,7 +52,6 @@ const LogIn = ({ setUser }) => {
                 <p>Vous n'avez pas de compte ?</p>
                 <button className="create-account" onClick={() => {
                     history.push("/user/sign_up");
-
                 }}>Créer un compte</button>
             </form>
         </div>

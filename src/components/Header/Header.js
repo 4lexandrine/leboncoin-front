@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom";
 import Cookies from "js-cookie";
 import "./Header.css"
 
-const Header = ({ user, setUser }) => {
+const Header = ({ setUser, user }) => {
 
     const history = useHistory();
 
@@ -30,7 +30,6 @@ const Header = ({ user, setUser }) => {
                             <button className="search-btn" onClick={() => {
                                 history.push("/");
                             }}><FontAwesomeIcon className="icon-s icon-search" icon='search' />Rechercher</button>
-
                         </div>
                     </div>
                     {/* Si mon user est null (que personne n'est connecté) alors j'affiche un bouton pour se connecter qui me renvoie vers la page d'accueil */}
@@ -47,6 +46,7 @@ const Header = ({ user, setUser }) => {
                                 onClick={() => {
                                     // j'efface mon token
                                     Cookies.remove("token");
+                                    Cookies.remove("username");
                                     // je remets mon état user à null pour pouvoir réafficher un bouton pour se connecter
                                     setUser(null);
                                     // je renvoie l'utilisateur vers la page d'accueil
