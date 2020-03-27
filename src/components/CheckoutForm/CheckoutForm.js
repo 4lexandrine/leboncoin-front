@@ -1,9 +1,14 @@
 import React, { useState } from "react";
 import { CardElement, injectStripe } from "react-stripe-elements";
+import { useHistory } from "react-router-dom";
+
 import axios from "axios";
 
-const CheckoutForm = ({ stripe, price, title, username }) => {
+const CheckoutForm = ({ stripe, price, title, username, id }) => {
+    const history = useHistory();
+
     const [purchaseComplete, setPurchaseComplete] = useState(false);
+
     return (
         !purchaseComplete ? (
             <div className="d-flex flex-column align-items">
@@ -18,7 +23,8 @@ const CheckoutForm = ({ stripe, price, title, username }) => {
                     } else {
                         // console.log(stripeResponse.token);
 
-                        const response = await axios.post("https://leboncoin-4lexandrine.herokuapp.com/payment",
+                        // const response = await axios.post(`https://leboncoin-4lexandrine.herokuapp.com/payment${id}`,
+                        const response = await axios.post(`http://localhost:3100/payment/${id}`,
                             {
                                 token: stripeResponse.token.id,
                                 price: price,
@@ -27,6 +33,7 @@ const CheckoutForm = ({ stripe, price, title, username }) => {
                         );
                         console.log(response);
                         if (response.status === 200) {
+                            history.push("/")
                             setPurchaseComplete(true);
                         } else {
                             alert("An error occurred");

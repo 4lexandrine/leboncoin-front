@@ -54,9 +54,9 @@ function App() {
         <Header setUser={setUser} user={user} username={username} />
         <Switch>
           <Route exact path="/" >
-            <Offers user={user} />
+            <Offers />
           </Route>
-          <Route path="/payment">
+          <Route path="/payment/:id">
             <Payment username={username} />
           </Route>
           <Route path="/offer/publish">

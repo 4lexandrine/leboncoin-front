@@ -116,9 +116,9 @@ h3 {
 }
 
 /* VISIBILITY */
-/* .hidden {
+.hidden {
   display: none;
-} */
+}
 
 /* PAGINATION */
 .pagination-btn {

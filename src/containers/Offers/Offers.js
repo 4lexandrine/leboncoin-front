@@ -7,7 +7,7 @@ import Search from "../../components/Search/Search";
 import moment from "moment";
 import 'moment/locale/fr';
 
-const Offers = ({ user }) => {
+const Offers = () => {
     moment.locale('fr');
     const [isLoading, setIsLoading] = useState(true); // état pour voir voir si la page est chargée ou en cours de chargement
     const [products, setProducts] = useState({}); // état pour mettre à jour la liste d'offres
@@ -21,7 +21,7 @@ const Offers = ({ user }) => {
             const data = await response.json();
             setProducts(data.offers); // on enregistre les données reçues dans notre état products
             // setTotalOffers(data.offers.length);
-            // console.log(data.offers.length);
+            console.log(data.offers);
             setIsLoading(false); // on signifie que le chargement est effectué
         }
         fetchData(); // on appelle la fonction

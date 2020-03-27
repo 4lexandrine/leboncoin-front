@@ -1,5 +1,5 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { Elements } from "react-stripe-elements";
 import CheckoutForm from "../../components/CheckoutForm/CheckoutForm";
 import "./Payment.css"
@@ -8,6 +8,8 @@ const Payment = ({ username }) => {
     const location = useLocation();
     const { title, picture, price } = location.state;
     // const username = Cookies.get("username");
+    const { id } = useParams();
+    console.log(id);
 
     return (
         <section>
@@ -19,9 +21,7 @@ const Payment = ({ username }) => {
                     <p className="price">{price} €</p>
                     <h3>Vos coordonnées bancaires</h3>
                     <Elements>
-                        {/* <CheckoutForm username={username} price={price} title={title} /> */}
-                        <CheckoutForm price={price} title={title} username={username} />
-
+                        <CheckoutForm price={price} title={title} username={username} id={id} />
                     </Elements>
                 </div>
             </div>
