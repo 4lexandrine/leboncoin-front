@@ -23,7 +23,7 @@ const CheckoutForm = ({ stripe, price, title, username, id }) => {
                     } else {
                         // console.log(stripeResponse.token);
 
-                        const response = await axios.post(`https://leboncoin-4lexandrine.herokuapp.com/payment${id}`,
+                        const response = await axios.post(`https://leboncoin-4lexandrine.herokuapp.com/payment`,
                             // const response = await axios.post(`http://localhost:3100/payment/${id}`,
                             {
                                 token: stripeResponse.token.id,
