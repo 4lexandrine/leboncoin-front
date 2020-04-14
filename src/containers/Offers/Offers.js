@@ -4,7 +4,8 @@ import "./Offers.css";
 import Search from "../../components/Search/Search";
 import Pagination from 'rc-pagination';
 import Product from "../../components/Product/Product";
-import "../../../node_modules/rc-pagination/assets/index.css"
+import "../../../node_modules/rc-pagination/assets/index.css";
+import axios from "axios";
 
 const Offers = ({ isActive }) => {
     const [isLoading, setIsLoading] = useState(true);
@@ -14,10 +15,9 @@ const Offers = ({ isActive }) => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch(process.env.REACT_APP_URL + `/offer/with-count?page=${currentPage}`);
-            const data = await response.json();
-            setTotal(data.count);
-            setProducts(data.offers);
+            const response = await axios.get(process.env.REACT_APP_URL + `offer/with-count?page=${currentPage}`);
+            setTotal(response.count);
+            setProducts(response.offers);
             setIsLoading(false);
         }
         fetchData();

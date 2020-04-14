@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
+import axios from "axios";
 import moment from "moment";
 import 'moment/locale/fr';
 import "./Offer.css";
@@ -16,10 +17,9 @@ const Offer = ({ user }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch(process.env.REACT_APP_URL + `/offer/${id}`);
-      const data = await response.json();
-      setRetailCount(data.count);
-      setProduct(data.offer);
+      const response = await axios.get(process.env.REACT_APP_URL + `offer/${id}`);
+      setRetailCount(response.count);
+      setProduct(response.offer);
       setIsLoading(false)
     }
     fetchData();
