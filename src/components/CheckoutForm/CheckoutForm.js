@@ -21,7 +21,7 @@ const CheckoutForm = ({ stripe, price, title, username, id }) => {
                     if (stripeResponse.error) {
                         alert(stripeResponse.error.message);
                     } else {
-                        const response = await axios.post(process.env.REACT_APP_URL + `payment`,
+                        const response = await axios.post(`https://leboncoin-4lexandrine.herokuapp.com/payment`,
                             {
                                 token: stripeResponse.token.id,
                                 price: price,

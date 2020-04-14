@@ -15,7 +15,7 @@ const Offers = ({ isActive }) => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await axios.get(process.env.REACT_APP_URL + `offer/with-count?page=${currentPage}`);
+            const response = await axios.get(`https://leboncoin-4lexandrine.herokuapp.com/offer/with-count?page=${currentPage}`);
             setTotal(response.data.count);
             setProducts(response.data.offers);
             setIsLoading(false);

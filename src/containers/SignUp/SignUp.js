@@ -49,7 +49,7 @@ const SignUp = ({ onLog }) => {
                             if (cgv) { // si les conditions générales sont cochées
                                 try { // alors j'essaie d'envoyer les infos nécessaires au serveur
                                     const response = await axios.post(
-                                        process.env.REACT_APP_URL + "user/sign_up",
+                                        "https://leboncoin-4lexandrine.herokuapp.com/user/sign_up",
 
                                         { username, email, password });
 

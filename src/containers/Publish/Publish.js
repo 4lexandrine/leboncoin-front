@@ -27,7 +27,7 @@ const Publish = () => {
 
                 try {
                     const response = await axios.post(
-                        process.env.REACT_APP_URL + "offer/publish",
+                        "https://leboncoin-4lexandrine.herokuapp.com/offer/publish",
                         formData,
                         {
                             headers: {

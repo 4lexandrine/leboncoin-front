@@ -12,7 +12,7 @@ const Search = ({ setProducts }) => {
         <form className="search-block d-flex align-items justify-center"
             onSubmit={async (event) => {
                 event.preventDefault();
-                const response = await axios.post(process.env.REACT_APP_URL + "search", { search });
+                const response = await axios.post("https://leboncoin-4lexandrine.herokuapp.com/search", { search });
                 setProducts(response.data.search)
             }}
         >

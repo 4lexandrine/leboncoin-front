@@ -17,7 +17,7 @@ const LogIn = ({ onLog }) => {
                         try {
                             e.preventDefault();
                             const response = await axios.post(
-                                process.env.REACT_APP_URL + "user/log_in",
+                                "https://leboncoin-4lexandrine.herokuapp.com/user/log_in",
                                 { email, password });
                             if (response.data.token) {
                                 onLog(response.data.token, response.data.username);
