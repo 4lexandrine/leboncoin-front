@@ -9,7 +9,6 @@ const Payment = ({ username }) => {
     const { title, picture, price } = location.state;
     // const username = Cookies.get("username");
     const { id } = useParams();
-    console.log(id);
 
     return (
         <section>

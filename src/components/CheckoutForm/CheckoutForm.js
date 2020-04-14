@@ -21,23 +21,18 @@ const CheckoutForm = ({ stripe, price, title, username, id }) => {
                     if (stripeResponse.error) {
                         alert(stripeResponse.error.message);
                     } else {
-                        // console.log(stripeResponse.token);
-
-                        const response = await axios.post(`https://leboncoin-4lexandrine.herokuapp.com/payment`,
-                            // const response = await axios.post(`http://localhost:3100/payment/${id}`,
+                        const response = await axios.post(process.env.REACT_APP_URL + `/payment`,
                             {
                                 token: stripeResponse.token.id,
                                 price: price,
                                 title: title
                             }
                         );
-                        console.log(response);
                         if (response.status === 200) {
                             history.push("/")
                             setPurchaseComplete(true);
                         } else {
                             alert("An error occurred");
-                            // console.error(response);
                         }
                     }
                 }}>Valider</button>

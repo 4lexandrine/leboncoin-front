@@ -9,18 +9,18 @@ const Offer = ({ user }) => {
   const history = useHistory();
 
   const { id } = useParams();
-  // console.log(id);
 
   const [product, setProduct] = useState({});
+  const [retailCount, setRetailCount] = useState();
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch(`https://leboncoin-4lexandrine.herokuapp.com/offer/${id}`);
+      const response = await fetch(process.env.REACT_APP_URL + `/offer/${id}`);
       const data = await response.json();
-      setProduct(data);
+      setRetailCount(data.count);
+      setProduct(data.offer);
       setIsLoading(false)
-      // console.log(data);
     }
     fetchData();
 
@@ -50,7 +50,7 @@ const Offer = ({ user }) => {
             <aside className="wrapper-user">
               <div className='user d-flex flex-column align-items sp-around'>
                 <h2>{product.creator.account.username}</h2>
-                <p>17 Annonces en ligne</p>
+                <p>{retailCount} Annonce(s) en ligne</p>
                 <button className="orange-btn"
                   onClick={() => {
                     user === null ? history.push("/user/log_in") : history.push(`/payment/${id}`, { title: product.title, picture: product.picture, price: product.price, product: product });

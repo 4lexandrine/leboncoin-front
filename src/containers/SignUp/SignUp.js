@@ -49,15 +49,13 @@ const SignUp = ({ onLog }) => {
                             if (cgv) { // si les conditions générales sont cochées
                                 try { // alors j'essaie d'envoyer les infos nécessaires au serveur
                                     const response = await axios.post(
-                                        // "http://localhost:3100/user/sign_up",
-                                        "https://leboncoin-4lexandrine.herokuapp.com/user/sign_up",
+                                        process.env.REACT_APP_URL + "user/sign_up",
 
                                         { username, email, password });
 
                                     if (response.data.token) { // si le serveur me renvoie un token
 
                                         onLog(response.data.token, response.data.account.username)
-                                        // console.log(response.data.token);
                                         // et je réinitialise tous mes états
                                         setUsername("");
                                         setEmail("");
@@ -67,8 +65,6 @@ const SignUp = ({ onLog }) => {
                                     }
                                 } catch (error) {
                                     alert("An error occured");
-                                    console.log(error.message);
-
                                 }
                             } else {
                                 alert("Vous n'avez pas validé les Conditions Générales")

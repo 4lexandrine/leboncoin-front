@@ -69,3 +69,7 @@
 .icon-heart:hover {
   cursor: pointer;
 }
+.pagination {
+  display: flex;
+  margin: 50px 0;
+}

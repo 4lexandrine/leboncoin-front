@@ -3,7 +3,6 @@ import axios from "axios";
 import "./Publish.css";
 import { useHistory } from "react-router-dom";
 import Cookies from "js-cookie";
-// import Dropzone from "../../components/Dropzone/Dropzone";
 
 const Publish = () => {
     const history = useHistory();
@@ -21,19 +20,14 @@ const Publish = () => {
 
                 const formData = new FormData();
 
-                // Dans formData, on aura des fichiers et aussi des variables de type string, number, object, etc.
                 formData.append("title", title);
                 formData.append("description", description);
                 formData.append("price", price);
                 formData.append("picture", file)
-                // const keys = Object.keys(file);
-                // for (let key in keys) {
-                //     formData.append("picture", file[keys]);
-                // }
+
                 try {
                     const response = await axios.post(
-                        "https://leboncoin-4lexandrine.herokuapp.com/offer/publish",
-                        // "http://localhost:3100/offer/publish",
+                        process.env.REACT_APP_URL + "offer/publish",
                         formData,
                         {
                             headers: {
@@ -42,7 +36,6 @@ const Publish = () => {
                             }
                         }
                     );
-                    console.log(response);
                     history.push(`/offer/${response.data._id}`);
                 } catch (error) {
                     if (error.response.status === 500) {
@@ -70,7 +63,6 @@ const Publish = () => {
                         <span> €</span>
                     </div>
                     <label>Photo *</label>
-                    {/* <Dropzone setFile={setFile} file={file} /> */}
                     <div>
                         <input className="file" type="file" onChange={(e) => {
                             setFile(e.target.files[0]);

@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom";
 import Cookies from "js-cookie";
 import "./Header.css"
 
-const Header = ({ setUser, user }) => {
+const Header = ({ setUser, user, setIsActive, isActive }) => {
 
     const history = useHistory();
 
@@ -15,7 +15,6 @@ const Header = ({ setUser, user }) => {
             <header>
                 <div className="wrapper d-flex sp-between">
                     <div className="left-header d-flex sp-between">
-                        {/* Quand je clic sur le logo, je reviens vers la page d'accueil */}
                         <h1><img className="logo" src={logo} alt="" onClick={() => {
                             history.push("/");
                         }} /></h1>
@@ -28,6 +27,7 @@ const Header = ({ setUser, user }) => {
                         }} className="orange-btn"><FontAwesomeIcon className="icon-xs" icon={['far', 'plus-square']} />Déposer une annonce</button>
                         <div className="underline">
                             <button className="search-btn" onClick={() => {
+                                setIsActive(!isActive)
                                 history.push("/");
                             }}><FontAwesomeIcon className="icon-s icon-search" icon='search' />Rechercher</button>
                         </div>
