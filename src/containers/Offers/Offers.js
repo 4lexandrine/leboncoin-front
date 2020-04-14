@@ -16,8 +16,8 @@ const Offers = ({ isActive }) => {
     useEffect(() => {
         const fetchData = async () => {
             const response = await axios.get(process.env.REACT_APP_URL + `offer/with-count?page=${currentPage}`);
-            setTotal(response.count);
-            setProducts(response.offers);
+            setTotal(response.data.count);
+            setProducts(response.data.offers);
             setIsLoading(false);
         }
         fetchData();

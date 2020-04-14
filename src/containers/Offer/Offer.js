@@ -18,8 +18,8 @@ const Offer = ({ user }) => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get(process.env.REACT_APP_URL + `offer/${id}`);
-      setRetailCount(response.count);
-      setProduct(response.offer);
+      setRetailCount(response.data.count);
+      setProduct(response.data.offer);
       setIsLoading(false)
     }
     fetchData();
