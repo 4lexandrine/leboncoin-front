@@ -7,7 +7,6 @@ import "./Payment.css"
 const Payment = ({ username }) => {
     const location = useLocation();
     const { title, picture, price } = location.state;
-    // const username = Cookies.get("username");
     const { id } = useParams();
 
     return (

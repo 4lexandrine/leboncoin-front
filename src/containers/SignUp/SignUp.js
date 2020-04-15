@@ -7,7 +7,6 @@ import "./Signup.css";
 const SignUp = ({ onLog }) => {
     const history = useHistory();
 
-    // j'initialise tous mes état de formulaire
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [password1, setPassword1] = useState("");

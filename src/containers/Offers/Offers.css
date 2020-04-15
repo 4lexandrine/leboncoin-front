@@ -38,6 +38,7 @@
 .offers-wrapper {
   margin: 14px 0;
   height: 180px;
+  width: 1000px;
   position: relative;
   border-radius: 4px;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);

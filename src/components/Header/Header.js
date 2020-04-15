@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom";
 import Cookies from "js-cookie";
 import "./Header.css"
 
-const Header = ({ setUser, user, setIsActive, isActive }) => {
+const Header = ({ setUser, user, setIsActive, isActive, username }) => {
 
     const history = useHistory();
 
@@ -32,7 +32,7 @@ const Header = ({ setUser, user, setIsActive, isActive }) => {
                             }}><FontAwesomeIcon className="icon-s icon-search" icon='search' />Rechercher</button>
                         </div>
                     </div>
-                    {/* Si mon user est null (que personne n'est connecté) alors j'affiche un bouton pour se connecter qui me renvoie vers la page d'accueil */}
+                    {/* Si personne n'est connecté alors j'affiche un bouton pour se connecter qui me renvoie vers la page d'accueil */}
                     {user === null ? (
                         <button className="user-connect underline d-flex flex-column align-items" onClick={() => {
                             history.push("/user/log_in");
@@ -53,7 +53,9 @@ const Header = ({ setUser, user, setIsActive, isActive }) => {
                                     history.push("/");
                                 }}
 
-                            > <FontAwesomeIcon className="icon-s" icon={['far', 'user']} />
+                            ><div className="d-flex">
+                                    <FontAwesomeIcon className="icon-s pr5" icon={['far', 'user']} />
+                                    <p>{username}</p></div>
                                 <p>Se déconnecter</p>
 
                             </button>

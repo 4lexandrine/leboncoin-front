@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+// import { css } from "@emotion/core";
+import BeatLoader from "react-spinners/BeatLoader";
 import { useParams, useHistory } from "react-router-dom";
 import axios from "axios";
 import moment from "moment";
@@ -28,7 +30,7 @@ const Offer = ({ user }) => {
 
   return (
     <>
-      {isLoading ? <></> :
+      {isLoading ? <div className="loader d-flex align-items justify-center"><BeatLoader color={"#f56b2a"} size={50} /></div> :
         <section>
           <div className="d-flex justify-center wrapper">
             <div>

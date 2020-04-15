@@ -30,3 +30,6 @@
 .publish-form .file {
   border: none;
 }
+.publish-form input {
+  padding: 5px;
+}

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-
+// import { css } from "@emotion/core";
+import BeatLoader from "react-spinners/BeatLoader";
 import "./Offers.css";
 import Search from "../../components/Search/Search";
 import Pagination from 'rc-pagination';
@@ -24,10 +25,10 @@ const Offers = ({ isActive }) => {
     }, [currentPage]);
 
     return (
-        <>
-            {isLoading ? <>En cours de chargement...</> :
+        <div className="wrapper d-flex align-items justify-center">
+            {isLoading ? <div className="loader d-flex align-items justify-center"><BeatLoader color={"#f56b2a"} size={50} /></div> :
                 <section>
-                    <div className="wrapper d-flex flex-column align-items sp-between" >
+                    <div className="d-flex flex-column align-items sp-between" >
                         <div className="ellipse"></div>
                         {isActive ?
                             <Search setProducts={setProducts} />
@@ -50,7 +51,7 @@ const Offers = ({ isActive }) => {
                     </div>
                 </section>
             }
-        </>
+        </div>
     );
 }
 

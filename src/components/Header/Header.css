@@ -38,6 +38,7 @@ header {
   position: relative;
   padding-bottom: 7px;
   width: 110px;
+  height: 60px;
 }
 .user-connect p {
   margin-top: 5px;

@@ -10,7 +10,7 @@ const Product = ({ _id, picture, title, price, created }) => {
     const url = `/offer/${_id}`
     return <div className="offers">
         <Link to={url}>
-            <div className="d-flex wrapper offers-wrapper" >
+            <div className="d-flex offers-wrapper" >
                 <div className="picture"> {picture ? <img className="picture" src={picture} alt={title} /> : picture}</div>
                 <div className="offers-description d-flex flex-column sp-between">
                     <FontAwesomeIcon className="icon-s icon-heart" icon={['far', 'heart']} />

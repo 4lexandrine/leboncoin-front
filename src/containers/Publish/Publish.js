@@ -52,7 +52,7 @@ const Publish = () => {
                         setTitle(e.target.value);
                     }} />
                     <label>Texte de l'annonce *</label>
-                    <textarea name="" id="" cols="30" rows="10" value={description} onChange={(e) => {
+                    <textarea cols="30" rows="10" value={description} onChange={(e) => {
                         setDescription(e.target.value)
                     }}></textarea>
                     <label>Prix *</label>

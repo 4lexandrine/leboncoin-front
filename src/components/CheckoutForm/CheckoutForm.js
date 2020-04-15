@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import { CardElement, injectStripe } from "react-stripe-elements";
-import { useHistory } from "react-router-dom";
 
 import axios from "axios";
 
-const CheckoutForm = ({ stripe, price, title, username, id }) => {
-    const history = useHistory();
+const CheckoutForm = ({ stripe, price, title, username }) => {
 
     const [purchaseComplete, setPurchaseComplete] = useState(false);
 
@@ -29,7 +27,6 @@ const CheckoutForm = ({ stripe, price, title, username, id }) => {
                             }
                         );
                         if (response.status === 200) {
-                            history.push("/")
                             setPurchaseComplete(true);
                         } else {
                             alert("An error occurred");
