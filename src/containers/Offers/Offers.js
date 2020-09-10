@@ -12,6 +12,9 @@ const Offers = ({ isActive }) => {
     const [isLoading, setIsLoading] = useState(true);
     const [products, setProducts] = useState({});
     const [total, setTotal] = useState();
+    const [searchResults, setSearchResults] = useState({});
+    const [search, setSearch] = useState("");
+
     let [currentPage, setCurrentPage] = useState(1);
 
     useEffect(() => {
@@ -24,6 +27,11 @@ const Offers = ({ isActive }) => {
         fetchData();
     }, [currentPage]);
 
+    useEffect(() => {
+        (!isActive || !search) && setSearchResults({})
+        !isActive && setSearch('')
+    }, [isActive, search])
+
     return (
         <div className="wrapper d-flex align-items justify-center">
             {isLoading ? <div className="loader d-flex align-items justify-center"><BeatLoader color={"#f56b2a"} size={50} /></div> :
@@ -31,10 +39,15 @@ const Offers = ({ isActive }) => {
                     <div className="d-flex flex-column align-items sp-between" >
                         <div className="ellipse"></div>
                         {isActive ?
-                            <Search setProducts={setProducts} />
+                            <Search setProducts={setProducts} search={search} setSearch={setSearch} setSearchResults={setSearchResults} />
                             : <div style={{ height: "100px" }}></div>}
-                        {(products &&
+                        {(isActive && search && searchResults.length > 0 ?
+                            searchResults.map(searchResult => {
+                                return <Product {...searchResult} key={searchResult._id} />
+                            })
+                            : products &&
                             products.map(product => {
+                                // setSearchResultsNumber(products.length)
                                 return <Product {...product} key={product._id} />
                             })
                         )}
@@ -42,11 +55,11 @@ const Offers = ({ isActive }) => {
                         <Pagination
                             className="pagination"
                             pageSize={5}
-                            total={total}
+                            total={isActive ? products.length : total}
                             onChange={(currentPage) => {
                                 setCurrentPage(currentPage)
                             }}
-
+                            style={{ margin: '20px 10px 50px' }}
                         />
                     </div>
                 </section>

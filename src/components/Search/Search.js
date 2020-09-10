@@ -1,19 +1,18 @@
 // Composant de recherche dans le header
-import React, { useState } from "react";
+import React from "react";
 import axios from "axios";
 import "./Search.css";
 
 
-const Search = ({ setProducts }) => {
+const Search = ({ setSearchResults, search, setSearch }) => {
 
-    const [search, setSearch] = useState("");
 
     return (
         <form className="search-block d-flex align-items justify-center"
             onSubmit={async (event) => {
                 event.preventDefault();
                 const response = await axios.post("https://leboncoin-4lexandrine.herokuapp.com/search", { search });
-                setProducts(response.data.search)
+                setSearchResults(response.data.search)
             }}
         >
             <input
