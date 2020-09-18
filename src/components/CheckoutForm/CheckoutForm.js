@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import { CardElement, injectStripe } from "react-stripe-elements";
-import { GoogleReCaptchaProvider, GoogleReCaptcha } from 'react-google-recaptcha-v3';
+import { GoogleReCaptchaProvider, useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 
 import axios from "axios";
 
 const CheckoutForm = ({ stripe, price, title, username }) => {
+    const { executeRecaptcha } = useGoogleReCaptcha();
 
     const [purchaseComplete, setPurchaseComplete] = useState(false);
     const [captchaToken, setCaptchaToken] = useState(null)
 
     const onSubmit = async () => {
-        const stripeResponse = await stripe.createToken({ name: username });
-
+        const stripeResponse = await stripe.createToken({ name: username })
         if (stripeResponse.error) {
             alert(stripeResponse.error.message);
         } else {
@@ -22,7 +22,7 @@ const CheckoutForm = ({ stripe, price, title, username }) => {
                     title: title,
                     captchaToken
                 }
-            );
+            )
             if (response.status === 200) {
                 setPurchaseComplete(true);
             } else {
@@ -33,18 +33,17 @@ const CheckoutForm = ({ stripe, price, title, username }) => {
 
     return (
         !purchaseComplete ? (
-            <GoogleReCaptchaProvider
-                reCaptchaKey="6LcPv80ZAAAAABIdojmtX5td4-JGbvnrSWaDIoux"
-            >
-                <GoogleReCaptcha onVerify={captchaToken => setCaptchaToken(captchaToken)} />
 
-                <div className="d-flex flex-column align-items">
-                    {/* J'affiche mon formulmaire de CB */}
-                    <CardElement className="card" />
-                    {/* On envoie le numero de CB à Stripe, à aucun moment nous ne gérons la confidentialité ou la sécurité, c'est Stripe qui gère ! */}
-                    <button className="orange-btn" onClick={onSubmit}>Valider</button>
-                </div >
-            </GoogleReCaptchaProvider>
+            <div className="d-flex flex-column align-items">
+                {/* J'affiche mon formulmaire de CB */}
+                <CardElement className="card" onChange={async () => {
+                    const result = await executeRecaptcha("payment")
+                    setCaptchaToken(result)
+                }} />
+                {/* On envoie le numero de CB à Stripe, à aucun moment nous ne gérons la confidentialité ou la sécurité, c'est Stripe qui gère ! */}
+                <button className="orange-btn" onClick={onSubmit}>Valider</button>
+            </div >
+
         ) : (
                 <div>
                     <h2>Paiement validé</h2>
