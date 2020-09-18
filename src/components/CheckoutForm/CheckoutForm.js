@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { CardElement, injectStripe } from "react-stripe-elements";
-import { GoogleReCaptchaProvider, useGoogleReCaptcha } from 'react-google-recaptcha-v3';
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 
 import axios from "axios";
 
