@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { StripeProvider } from "react-stripe-elements";
+
 import Cookies from "js-cookie";
 
 import Header from "./components/Header/Header";
@@ -34,8 +34,8 @@ function App() {
     Cookies.set("username", username, { expires: 7 });
   };
 
+
   return (
-    <StripeProvider apiKey="pk_test_PyYOjGwyrTCkcSWUiDUU5MlT00xdLDWfPF">
       <Router>
         <Header setUser={setUser} user={user} username={username} setIsActive={setIsActive} isActive={isActive} />
         <Switch>
@@ -60,7 +60,6 @@ function App() {
         </Switch>
         <Footer />
       </Router>
-    </StripeProvider>
   );
 }
 
