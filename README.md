@@ -10,7 +10,7 @@
   - cookies
 - Publish offer
 - Get detail of an offer
-- Buy whith Stripe :
+- Buy with Stripe :
   - credit card number : 4242 4242 4242 4242
   - expiration date must be in the futur
 
