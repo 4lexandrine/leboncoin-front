@@ -15,7 +15,7 @@
     "acorn": "^8.0.4",
     "axios": "^0.21.0",
     "js-cookie": "^2.2.1",
-    "minimist": "^1.2.5",
+    "minimist": "^1.2.6",
     "moment": "^2.29.1",
     "rc-pagination": "^3.1.2",
     "react": "^17.0.1",
